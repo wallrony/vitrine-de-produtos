@@ -145,6 +145,10 @@
     font-weight: bold;
 }
 
+#product-info .product-description {
+    margin: 1rem 1rem .5rem 0;
+}
+
 .product-item .app-btn.primary {
     width: 100%;
 }

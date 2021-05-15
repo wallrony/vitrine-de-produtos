@@ -63,6 +63,11 @@
             <div id="product-info">
                 <p class="product-name">{{ product.name }}</p>
                 <p class="product-price">R$ {{ product.price }}</p>
+                {% if not product.description %}
+                    <p class="product-description">Este produto não tem descrição.</p>
+                {% else %}
+                    <p class="product-description">{{ product.description }}</p>
+                {% endif %}
                 <p class="product-category">{{ product.category.name }}</p>
             </div>
         </div>
