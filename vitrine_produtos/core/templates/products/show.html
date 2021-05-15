@@ -1,0 +1,73 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="{% static "assets/icon.png" %}">
+    <title>Vitrine de Produtos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static "css/global.css" %}" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Satisfy&display=swap"
+          rel="stylesheet" />
+    <link rel="stylesheet" href="{% static "css/components/app-header.css" %}" />
+    <link rel="stylesheet" href="{% static "css/components/content-view.css" %}" />
+    <link rel="stylesheet" href="{% static "css/components/product.css" %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+</head>
+<body>
+    <header id="app-header">
+        <img src="{% static "assets/icon.png" %}" />
+        <div>
+            <h1>Vitrine de Produtos</h1>
+            <p>A melhor vendedora de produtos do Brasil!</p>
+        </div>
+    </header>
+
+    <main>
+        <div id="app-content-view" class="bg-white row">
+            <div id="product-view">
+                <div id="product-img-carousell" class="image-carousell">
+                    <div id="images">
+                        <div onclick="previousCarousellImage('product-img-carousell')">
+                            <i class="fas fa-arrow-left"></i>
+                        </div>
+                        {% if not product.images %}
+                            <img class="active" src="{% static "assets/icon.png" %}" />
+                        {% else %}
+                            {% for img in product.images %}
+                                {% if img == product.images.0 %}
+                                    <img class="active" src="{{ img.image }}" />
+                                {% else %}
+                                    <img src="{{ img.image }}" />
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                        <div onclick="nextCarousellImage('product-img-carousell')">
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                    <div id="indicators">
+                        {% if product.images %}
+                            {% for img in product.images %}
+                                {% if img == product.images.0 %}
+                                    <span class="active">·</span>
+                                {% else %}
+                                    <span>·</span>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div id="product-info">
+                <p class="product-name">{{ product.name }}</p>
+                <p class="product-price">R$ {{ product.price }}</p>
+                <p class="product-category">{{ product.category.name }}</p>
+            </div>
+        </div>
+    </main>
+
+    <script src="{% static "/js/carousell.js" %}"></script>
+</body>
+</html>

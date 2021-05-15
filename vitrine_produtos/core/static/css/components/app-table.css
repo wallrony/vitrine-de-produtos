@@ -1,0 +1,39 @@
+.app-table {
+    width: 100%;
+
+    border-collapse: collapse;
+}
+
+.app-table thead tr th {
+    text-align: left;
+    margin-bottom: 1rem;
+    padding-left: .5rem;
+    padding-bottom: .5rem;
+}
+
+.app-table tbody tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, .04);
+}
+
+.app-table tbody tr:nth-child(odd) {
+    background-color: rgba(255, 255, 255, .5);
+}
+
+.app-table tbody tr:hover {
+    background-color: rgba(0, 0, 0, .075);
+}
+
+.app-table tbody tr td {
+    padding: .5rem .75rem;
+}
+
+.app-table tbody tr td .app-btn {
+    padding: .5rem .75rem;
+    margin-top: 0;
+
+    line-height: 1;
+}
+
+.app-table tbody tr td .app-btn:not(:first-child) {
+    margin: 0 .5rem;
+}

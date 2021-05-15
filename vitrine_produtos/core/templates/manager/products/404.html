@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="{% static "assets/icon.png" %}">
+    <title>Produto não encontrado</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static "css/global.css" %}" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Satisfy&display=swap"
+          rel="stylesheet" />
+    <link rel="stylesheet" href="{% static "css/components/app-header.css" %}" />
+    <link rel="stylesheet" href="{% static "css/components/app-aside.css" %}" />
+    <link rel="stylesheet" href="{% static "css/components/content-view.css" %}" />
+    <script src="{% static "js/storage-controller.js" %}"></script>
+    <script>
+        let token = getAuthToken()
+
+        if(!token) window.location.href = '/manager/login'
+
+        token = undefined
+    </script>
+</head>
+<body>
+    <header id="app-header">
+        <img src="{% static "assets/icon.png" %}" />
+        <div>
+            <h1>Vitrine de Produtos <span class="admin-badge">manager</span></h1>
+        </div>
+    </header>
+
+    <main>
+        <aside id="app-aside-menu">
+            <button class="app-btn primary menu" onclick="toggleAsideMenu()">&#8801;</button>
+            <div class="user-info">
+                <h3 id="user-name">Olá, </h3>
+                <p id="user-role">Cargo: Lojista</p>
+            </div>
+
+            <p>Menu</p>
+            <nav>
+                <ul>
+                    <a href="#"><li class="selected">Visualizar Produtos</li></a>
+                    <a href="/manager/products/add"><li>Adicionar Produto</li></a>
+                    <a href="/manager/categories"><li>Visualizar Categorias</li></a>
+                </ul>
+            </nav>
+        </aside>
+        <div id="app-content-view">
+            <h2 id="content-view-title" class="text-center">4Ø4 ERROR</h2>
+            <p>O produto que procura não existe ou foi retirado da nossa loja.</p>
+        </div>
+    </main>
+    <script src="{% static "js/utils.js" %}"></script>
+    <script>
+        setUserNameInAside()
+    </script>
+</body>
+</html>

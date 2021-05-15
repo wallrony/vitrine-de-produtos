@@ -1,0 +1,30 @@
+#login-card {
+    display: block;
+
+    margin: 3rem auto 0;
+    width: max-content;
+    min-width: 300px;
+
+    padding: 2rem;
+
+    background-color: white;
+    border-radius: 8px;
+
+    box-shadow: 1px 1px 6px 1px var(--color-shadow);
+}
+
+#login-card h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    font-family: 'Inter' !important;
+
+    line-height: 1;
+}
+
+#login-card form {
+    margin-top: 2rem;
+}
+
+#login-card .app-btn.primary {
+    width: 100% !important;
+}

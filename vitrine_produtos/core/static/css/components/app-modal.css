@@ -1,0 +1,83 @@
+.app-modal {
+    position: absolute;
+    display: none;
+
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+
+    background-color: rgba(0, 0, 0, .3);
+
+    opacity: 0;
+    z-index: 10;
+}
+
+.app-modal.prepare {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.app-modal.show {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 1;
+}
+
+.app-modal .content {
+    position: relative;
+
+    min-width: 500px;
+
+    padding: 0;
+
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 6px 2px var(--color-shadow);
+}
+
+.app-modal .content .app-btn.hide-modal {
+    position: absolute;
+
+    top: -30px;
+    right: -15px;
+
+    padding: .75rem 1rem;
+
+    line-height: 1;
+}
+
+.app-modal .content header {
+    border-bottom: 2px solid rgba(0, 0, 0, .15);
+    padding: 1rem 2rem;
+}
+
+.app-modal .content header h1 {
+    font-size: 1.75rem;
+    font-weight: bold;
+    font-family: 'Inter', sans-serif;
+}
+
+.app-modal .content main {
+    padding: 1.5rem;
+
+    display: flex;
+}
+
+.app-modal .content main form {
+    width: 100%;
+
+    margin: unset;
+}
+
+.app-modal .content footer {
+    display: flex;
+    justify-content: flex-end;
+
+    border-top: 2px solid rgba(0, 0, 0, .15);
+
+    padding: .5rem 1rem;
+}

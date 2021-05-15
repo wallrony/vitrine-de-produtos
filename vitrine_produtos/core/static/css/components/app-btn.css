@@ -1,0 +1,53 @@
+.app-btn {
+    box-shadow: 1px 1px 4px 1px var(--color-shadow);
+    width: max-content;
+
+    color: white;
+    background-color: white;
+    padding: .75rem 1.5rem;
+    margin-top: .75rem;
+
+    font-weight: bold;
+    font-size: 1.25rem;
+
+    border: 1px solid transparent;
+    border-radius: 8px;
+}
+
+.app-btn:hover {
+    filter: brightness(1.1);
+}
+
+.app-btn.primary {
+    background-color: var(--color-primary);
+}
+
+.app-btn.back {
+    display: flex;
+    align-items: center;
+
+    margin-top: 0;
+
+    color: black !important;
+    line-height: .8;
+}
+
+.app-btn.back span {
+    font-size: 2rem;
+
+    margin-right: .75rem;
+}
+
+.app-btn.right {
+    display: block;
+    margin-left: auto;
+    font-size: 1.25rem;
+}
+
+.app-btn.danger {
+    background-color: darkred;
+}
+
+.app-btn.warning {
+    background-color: goldenrod;
+}

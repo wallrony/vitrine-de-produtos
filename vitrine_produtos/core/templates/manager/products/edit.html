@@ -1,0 +1,172 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>(Admin) Vitrine de Produtos - Editar Produto</title>
+    <link rel="shortcut icon" href="{% static "assets/icon.png" %}">
+    <link rel="stylesheet" href="{% static "css/global.css" %}" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Satisfy&display=swap"
+          rel="stylesheet" />
+    <link rel="stylesheet" href="{% static "css/components/app-header.css" %}" />
+    <link rel="stylesheet" href="{% static "css/components/content-view.css" %}" />
+    <link rel="stylesheet" href="{% static "css/components/app-btn.css" %}" />
+    <link rel="stylesheet" href="{% static "css/components/app-aside.css" %}" />
+    <link rel="stylesheet" href="{% static "css/components/app-form.css" %}" />
+    <link rel="stylesheet" href="{% static "css/components/app-grid.css" %}" />
+    <link rel="stylesheet" href="{% static "css/components/loading-circle.css" %}" />
+    <script src="{% static "js/storage-controller.js" %}"></script>
+    <script>
+        let token = getAuthToken()
+
+        if(!token) window.location.href = '/manager/login'
+
+        token = undefined
+    </script>
+</head>
+<body>
+    <header id="app-header">
+        <img src="{% static "assets/icon.png" %}" />
+        <div>
+            <h1>Vitrine de Produtos <span class="admin-badge">manager</span></h1>
+        </div>
+    </header>
+    <main>
+        <aside id="app-aside-menu">
+            <button class="app-btn primary menu" onclick="toggleAsideMenu()">&#8801;</button>
+            <div class="user-info">
+                <h3 id="user-name">Olá, </h3>
+                <p id="user-role">Cargo: Lojista</p>
+            </div>
+
+            <p>Menu</p>
+            <nav>
+                <ul>
+                    <a href="#"><li class="selected">Visualizar Produtos</li></a>
+                    <a href="/manager/products/add"><li>Adicionar Produto</li></a>
+                    <a href="/manager/categories"><li>Visualizar Categorias</li></a>
+                </ul>
+            </nav>
+        </aside>
+        <div id="app-content-view">
+            <div class="content-header">
+                <button class="app-btn back" onclick="window.history.back()">
+                    <span>‹</span> Voltar
+                </button>
+                <h2 id="content-view-title">Alterar Produto</h2>
+            </div>
+            <form id="add-product-form" class="app-form">
+                <div class="grid col-3">
+                    <div class="form-group">
+                        <label>Nome:</label>
+                        <input name="name" value="{{ product.name }}" />
+                    </div>
+                    <div class="form-group">
+                        <label>Preço:</label>
+                        <input name="price" type="number" step="0.1" value="{{ product.price }}"/>
+                    </div>
+                    <div class="form-group">
+                        <label>Categoria:</label>
+                        <select id="product-category" name="category">
+                            {% for category in categories %}
+                                <option
+                                    value="{{ category.id }}"
+                                >
+                                    {{ category.id }} - {{ category.name }}
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Descriçao:</label>
+                    <textarea name="description">{{ product.description }}</textarea>
+                </div>
+                <button
+                    id="save-product"
+                    class="app-btn primary right"
+                >
+                    Salvar
+                </button>
+                <div class="form-group">
+                    <label>Imagens:</label>
+                    <div id="image-list">
+                        {% for imgItem in product.images %}
+                            <div class="product-image">
+                                <img src="{{ imgItem.image }}" />
+                                <button
+                                    class="app-btn danger remove-product-image"
+                                    onclick="deleteImage({{ imgItem.id }})"
+                                >
+                                    🞩
+                                </button>
+                            </div>
+                        {% endfor %}
+                        <div class="file-input" onclick="getFileAndUpload({{ product.id }}, 'get-file')">
+                            <p>Clique aqui para selecionar uma imagem</p>
+                            <input
+                                id="get-file"
+                                type="file"
+                                name="get-file"
+                                style="display: none;"
+                            />
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <div id="loading-circle">
+        <span>◉</span>
+        <p>Carregando...</p>
+    </div>
+
+    <script src="{% static "js/utils.js" %}"></script>
+    <script src="{% static "js/loading-circle.js" %}"></script>
+    <script src="{% static "js/validators.js" %}"></script>
+    <script src="{% static "js/request.js" %}"></script>
+    <script>
+        setUserNameInAside()
+
+        document.getElementById('save-product').addEventListener('click', (e) => {
+            e.preventDefault()
+
+            const dto = validateSaveProduct('add-product-form')
+
+            delete dto['get-file']
+            delete dto['images']
+
+            dto['id'] = '{{ product.id }}'
+
+            if (dto) {
+                showLoadingCircle()
+                editProductRequest(dto, getAuthToken())
+            }
+        })
+
+        function deleteImage(imgId) {
+            deleteImageRequest(imgId, getAuthToken())
+        }
+
+        setProductCategory('product-category', {{ product.category }})
+
+        function getFileAndUpload(productId, inputId) {
+            const input = document.getElementById(inputId)
+
+            input.click()
+            input.onchange = (e) => {
+                e.stopPropagation();
+
+                const file = e.target.files[0]
+
+                showLoadingCircle()
+                uploadImageRequest(productId, file, getAuthToken())
+            }
+        }
+    </script>
+</body>
+</html>

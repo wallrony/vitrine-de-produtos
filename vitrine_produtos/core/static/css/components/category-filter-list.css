@@ -1,0 +1,35 @@
+.category-filter-list {
+    margin-bottom: 1rem;
+}
+
+.category-filter-list > strong:first-child {
+    margin-right: .5rem;
+}
+
+.category-filter-list span.category-filter {
+    margin: .5rem 0;
+    padding: .5rem .75rem;
+
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    line-height: 2.5;
+
+    border-radius: 8px;
+    box-shadow: 1px 1px 4px 1px var(--color-shadow);
+}
+
+.category-filter-list span.category-filter.selected {
+    color: white;
+
+    background-color: var(--color-primary);
+}
+
+.category-filter-list .app-btn {
+    margin-top: 0;
+    margin-left: 1rem;
+    padding: .5rem .75rem;
+
+    color: black;
+    line-height: 1.2;
+}

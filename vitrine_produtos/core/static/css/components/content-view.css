@@ -1,0 +1,67 @@
+main {
+    display: flex;
+
+    height: calc(100% - 132px);
+}
+
+main #app-content-view {
+    position: relative;
+    height: calc(100% - 6rem);
+
+    width: 100%;
+
+    padding: 2rem 2rem 4rem;
+
+    overflow: auto;
+}
+
+#app-content-view.bg-white {
+    background-color: white;
+}
+
+#app-content-view.row {
+    display: flex;
+}
+
+#app-content-view .content-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-bottom: 2rem;
+}
+
+#app-content-view .content-header .app-btn.primary {
+    font-size: 1rem;
+
+    padding: .75rem 1rem;
+    margin-top: 0;
+}
+
+#app-content-view .content-header #content-view-title {
+    margin-bottom: 0 !important;
+}
+
+#app-content-view #content-view-title {
+    margin-left: .25rem;
+    margin-bottom: 1.25rem;
+
+    font-size: 2rem;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+}
+
+@media (max-width: 600px) {
+    #app-content-view .content-header #content-view-title {
+        font-size: 1.5rem !important;
+    }
+
+    #app-content-view .content-header .app-btn.back {
+        font-size: 1rem;
+        padding: .5rem 1rem;
+    }
+
+    #app-content-view .content-header .app-btn.back ~ h2 {
+        text-align: right;
+    }
+}

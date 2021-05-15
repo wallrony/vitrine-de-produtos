@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="{% static "assets/icon.png" %}">
+    <title>Produto não encontrado</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static "css/global.css" %}" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Satisfy&display=swap"
+          rel="stylesheet" />
+    <link rel="stylesheet" href="{% static "css/components/app-header.css" %}" />
+    <link rel="stylesheet" href="{% static "css/components/content-view.css" %}" />
+</head>
+<body>
+    <header id="app-header">
+        <img src="{% static "assets/icon.png" %}" />
+        <div>
+            <h1>Vitrine de Produtos</h1>
+            <p>A melhor vendedora de produtos do Brasil!</p>
+        </div>
+    </header>
+
+    <main id="app-content-view">
+        <h2 id="content-view-title" class="text-center">4Ø4 ERROR</h2>
+        <p>O produto que procura não existe ou foi retirado da nossa loja.</p>
+    </main>
+</body>
+</html>

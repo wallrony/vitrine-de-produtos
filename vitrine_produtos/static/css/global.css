@@ -1,0 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+
+    font-family: 'Inter', sans-serif;
+
+    transition: all .3s;
+    -webkit-transition: all .3s;
+    -o-transition: all .3s;
+    -moz-transition: all .3s;
+}
+
+:root {
+    --color-shadow: rgba(0, 0, 0, .15);
+    --color-primary: #ff7f29;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    overflow: auto;
+
+    background-color: rgba(0, 0, 0, .025)
+}
+
+a, a:link, a:hover, a:focus {
+    color: unset;
+    text-decoration: unset;
+}
+
+button {
+    cursor: pointer;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Satisfy', sans-serif;
+    font-weight: 100;
+}
+
+.text-center {
+    text-align: center;
+}

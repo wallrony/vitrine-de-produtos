@@ -1,0 +1,116 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>(Admin) Vitrine de Produtos - Lista de Produtos</title>
+    <link rel="shortcut icon" href="{% static "assets/icon.png" %}">
+    <link rel="stylesheet" href="{% static "css/global.css" %}" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Satisfy&display=swap"
+          rel="stylesheet" />
+    <link rel="stylesheet" href="{% static "css/components/app-header.css" %}" />
+    <link rel="stylesheet" href="{% static "css/components/content-view.css" %}" />
+    <link rel="stylesheet" href="{% static "css/components/app-aside.css" %}" />
+    <link rel="stylesheet" href="{% static "css/components/product.css" %}" />
+    <link rel="stylesheet" href="{% static "css/components/app-btn.css" %}" />
+    <script src="{% static "js/storage-controller.js" %}"></script>
+    <script>
+        let token = getAuthToken()
+
+        if(!token) {
+            window.location.href = '/manager/login'
+        }
+    </script>
+</head>
+<body>
+    <header id="app-header">
+        <img src="{% static "assets/icon.png" %}" />
+        <div>
+            <h1>Vitrine de Produtos <span class="admin-badge">manager</span></h1>
+        </div>
+        <button id="btn-logout" class="app-btn">Sair</button>
+    </header>
+
+    <main>
+        <aside id="app-aside-menu">
+            <button class="app-btn primary menu" onclick="toggleAsideMenu()">&#8801;</button>
+            <div class="user-info">
+                <h3 id="user-name">Olá, </h3>
+                <p id="user-role">Cargo: Lojista</p>
+            </div>
+
+            <p>Menu</p>
+            <nav>
+                <ul>
+                    <a href="#"><li class="selected">Visualizar Produtos</li></a>
+                    <a href="/manager/products/add"><li>Adicionar Produto</li></a>
+                    <a href="/manager/categories"><li>Visualizar Categorias</li></a>
+                </ul>
+            </nav>
+        </aside>
+
+        <div id="app-content-view">
+            <div class="content-header">
+                <h2 id="content-view-title">Lista de Produtos</h2>
+            </div>
+
+            {% if not products %}
+                <p>
+                    Não há nenhum produto disponível em nosso banco de dados.
+                    Clique no botão acima e adicione um produto.
+                </p>
+            {% else %}
+                <div class="product-grid">
+                    {% for product in products %}
+                        <div class="product-item">
+                            <button
+                                class="app-btn delete-product-btn"
+                                onclick="deleteProduct({{ product.id }})"
+                            >
+                                🞩
+                            </button>
+                            {% if not product.images %}
+                                <img src="{% static "assets/icon.png" %}" />
+                            {% else %}
+                                <img src="{{ product.images.0.image }}" />
+                            {% endif %}
+                            <div>
+                                <p class="product-name">{{ product.name }}</p>
+                                <p class="product-price">R$ {{ product.price }}</p>
+                                <button
+                                    class="app-btn primary"
+                                    onclick="window.location.href='/manager/products/edit/{{ product.id }}'"
+                                >
+                                    Editar
+                                </button>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </main>
+    <script src="{% static "js/request.js" %}"></script>
+    <script src="{% static "js/utils.js" %}"></script>
+    <script>
+        setUserNameInAside()
+
+        const btnLogout = document.getElementById('btn-logout')
+
+        btnLogout.addEventListener('click', () => {
+            localStorage.clear()
+
+            window.location.href = '/manager/login'
+        })
+
+        function deleteProduct(productId) {
+            const token = getAuthToken()
+
+            deleteProductRequest(productId, token)
+        }
+    </script>
+</body>
+</html>

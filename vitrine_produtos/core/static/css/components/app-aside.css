@@ -1,0 +1,105 @@
+#app-aside-menu {
+    position: relative;
+
+    height: 100%;
+    width: 25%;
+
+    max-width: 240px;
+
+    background-color: white;
+
+    box-shadow: 1px 0 6px 1px var(--color-shadow);
+
+    z-index: 10;
+}
+
+#app-aside-menu ~ #app-content-view {
+    width: 75%;
+}
+
+#app-aside-menu .app-btn.menu {
+    position: absolute;
+
+    display: none;
+
+    top: -30px;
+    right: -45px;
+
+    padding: .25rem 1rem;
+    font-size: 2rem;
+}
+
+#app-aside-menu .user-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    padding: 1rem;
+}
+
+#app-aside-menu .user-info h3 {
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    font-size: 1.5rem;
+
+    margin-bottom: .25rem;
+}
+
+#app-aside-menu > p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 1rem;
+    margin-left: .5rem;
+}
+
+#app-aside-menu nav {
+    padding: .5rem 0;
+}
+
+#app-aside-menu nav ul li {
+    padding: .5rem .75rem;
+    margin: .25rem 0;
+
+    background-color: rgba(0, 0, 0, 0.05);
+
+    cursor: pointer;
+}
+
+#app-aside-menu nav ul li.selected {
+    border-left: 8px solid var(--color-primary);
+    font-weight: bold;
+    padding-left: .75rem;
+}
+
+#app-aside-menu nav ul li:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+@media (min-width: 1124px) {
+    #app-aside-menu ~ #app-content-view {
+        width: calc(100% - 240px) !important;
+    }
+}
+
+@media (max-width: 900px) {
+    #app-aside-menu {
+        position: absolute;
+
+        height: calc(100% - 132px);
+        width: 240px;
+
+        transform: translateX(-240px);
+    }
+
+    #app-aside-menu.show {
+        transform: translateX(0px);
+    }
+
+    #app-aside-menu ~ #app-content-view {
+        width: 100% !important;
+    }
+
+    #app-aside-menu .app-btn.menu {
+        display: block;
+    }
+}

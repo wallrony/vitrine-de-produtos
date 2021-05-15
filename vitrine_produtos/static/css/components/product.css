@@ -1,0 +1,118 @@
+.product-grid {
+    display: grid;
+
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.product-item {
+    padding: 1.25rem .75rem;
+
+    box-shadow: 1px 1px 6px 2px var(--color-shadow);
+    background-color: white;
+
+    border-radius: 8px;
+}
+
+.product-item:hover {
+    margin-top: -.25rem;
+    box-shadow: 1px 1px 10px 3px var(--color-shadow);
+}
+
+#product-view .image-carousell {
+    width: 40%;
+    min-height: 300px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#product-view .image-carousell #images {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#product-view .image-carousell #indicators span {
+    font-size: 10rem;
+    line-height: .4;
+
+    user-select: none;
+}
+
+#product-view .image-carousell #indicators span.active {
+    color: var(--color-primary);
+}
+
+#product-view .image-carousell i {
+    font-size: 2rem;
+    color: var(--color-primary);
+
+    cursor: pointer;
+}
+
+#product-view .image-carousell img {
+    width: 80% !important;
+}
+
+#product-view .image-carousell img:not(.active) {
+    display: none;
+}
+
+.product-item img, #product-view .image-carousell img {
+    width: 100%;
+    max-width: 320px;
+    border-radius: 8px;
+    box-shadow: 1px 1px 4px 1px var(--color-shadow);
+
+    margin-bottom: .75rem;
+}
+
+.product-item .product-name {
+    font-size: 1.25rem;
+
+    margin-bottom: .25rem;
+}
+
+.product-item .product-price {
+    font-size: 1.75rem;
+    font-weight: bold;
+}
+
+.product-item button {
+    box-shadow: 1px 1px 4px 1px var(--color-shadow);
+    width: 100%;
+
+    color: white;
+    background-color: var(--color-primary);
+    padding: .75rem 1.5rem;
+    margin-top: .75rem;
+
+    font-weight: bold;
+    font-size: 1.25rem;
+
+    border: 1px solid transparent;
+    border-radius: 8px;
+}
+
+/* TABLET MEDIA QUERY */
+@media (max-width: 978px) {
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* MOBILE MEDIA QUERY */
+@media (max-width: 768px) {
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* SMALL MOBILE MEDIA QUERY (~500px) */
+@media (max-width: 500px) {
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+}

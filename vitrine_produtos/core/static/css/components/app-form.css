@@ -1,0 +1,117 @@
+form.app-form {
+    display: block;
+    margin: 0 auto;
+
+    max-width: 750px;
+}
+
+form.app-form .form-group {
+    display: flex;
+    flex-direction: column;
+
+    margin-bottom: .5rem;
+}
+
+form.app-form .form-group .error-paragraph {
+    color: #FD0000;
+}
+
+form.app-form .form-group label {
+    font-size: 1rem;
+}
+
+form.app-form .form-group input,
+form.app-form .form-group textarea,
+form.app-form .form-group select {
+    padding: .5rem;
+    margin: .5rem 0;
+
+    border: 1px solid transparent;
+    border-radius: 8px;
+    box-shadow: 0 0 3px 1px var(--color-shadow);
+}
+
+form.app-form .form-group textarea {
+    min-height: 75px;
+}
+
+form.app-form .form-group #image-list {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    margin-top: .5rem;
+}
+
+form.app-form .form-group #image-list .selected-image,
+form.app-form .form-group #image-list .product-image {
+    position: relative;
+}
+
+form.app-form .form-group #image-list .selected-image
+    .app-btn.remove-product-image,
+form.app-form .form-group #image-list .product-image
+    .app-btn.remove-product-image {
+    position: absolute;
+    top: -15px;
+    right: -5px;
+
+    padding: .5rem 1rem;
+
+    font-size: 1.5rem;
+    line-height: 1;
+
+    z-index: 2;
+}
+
+form.app-form .form-group #image-list .selected-image img,
+form.app-form .form-group #image-list .product-image img {
+    height: 150px;
+    max-width: 225px;
+
+    margin: .5rem .75rem 0;
+
+    border-radius: 8px;
+}
+
+form.app-form .form-group .file-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: .75rem 1rem;
+
+    max-width: 200px;
+    min-height: 100px;
+
+    text-align: center;
+
+    border: 3px dashed grey;
+    border-radius: 8px;
+
+    cursor: pointer;
+}
+
+form.app-form .form-group .file-input:hover {
+    background-color: rgba(0, 0, 0, .15);
+}
+
+form.app-form .form-group:last-of-type {
+    margin-bottom: 1rem;
+}
+
+form.app-form .app-btn.primary {
+    padding: .5rem 1rem;
+
+    font-size: 1.5rem;
+
+    background-color: var(--color-primary);
+    border: 1px solid transparent;
+    border-radius: 8px;
+}
+
+@media (max-width: 600px) {
+    form.app-form .app-btn.primary {
+        width: 100%;
+    }
+}

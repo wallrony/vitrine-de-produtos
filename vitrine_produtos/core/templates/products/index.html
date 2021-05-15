@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Vitrine de Produtos</title>
+    <link rel="shortcut icon" href="{% static "assets/icon.png" %}">
+    <link rel="stylesheet" href="{% static "css/global.css" %}" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Satisfy&display=swap"
+          rel="stylesheet" />
+    <link rel="stylesheet" href="{% static "css/components/app-header.css" %}" />
+    <link rel="stylesheet" href="{% static "css/components/app-btn.css" %}" />
+    <link rel="stylesheet" href="{% static "css/components/content-view.css" %}" />
+    <link rel="stylesheet" href="{% static "css/components/category-filter-list.css" %}" />
+    <link rel="stylesheet" href="{% static "css/components/product.css" %}" />
+</head>
+<body>
+    <header id="app-header">
+        <img src="{% static "assets/icon.png" %}" />
+        <div>
+            <h1>Vitrine de Produtos</h1>
+            <p>A melhor vendedora de produtos do Brasil!</p>
+        </div>
+    </header>
+
+    <main>
+        <div id="app-content-view">
+            <h2 id="content-view-title">Lista de Produtos</h2>
+
+            <div class="category-filter-list">
+                <strong>Filtrar por Categoria:</strong>
+                {% for category in categories %}
+                    <a href="/?filter={{ category.id }}">
+                        {% ifequal category.id|slugify selected_filter %}
+                            <span class="category-filter selected">{{ category.name }}</span>
+                        {% else %}
+                            <span class="category-filter">{{ category.name }}</span>
+                        {% endifequal %}
+                    </a>
+                {% endfor %}
+                <a href="/"><button class="app-btn warning">🞩 Cancelar Filtro</button></a>
+            </div>
+
+            {% if not products %}
+                <p>
+                    {% if selected_filter is 0 %}
+                        Não há nenhum produto disponível em nosso banco de dados.
+                        Por favor, acesse nossa pagina novamente daqui a um tempo.
+                    {% else %}
+                        Nenhum produto encontrado com o filtro selecionado em nosso banco de dados.
+                        Por favor, acesse nossa pagina novamente daqui a um tempo.
+                    {% endif %}
+                </p>
+            {% else %}
+                <div class="product-grid">
+                    {% for product in products %}
+                        <div class="product-item">
+                            {% if not product.images %}
+                                <img src="{% static "assets/icon.png" %}" />
+                            {% else %}
+                                <img src="{{ product.images.0.image }}" />
+                            {% endif %}
+                            <p class="product-name">{{ product.name }}</p>
+                            <p class="product-price">R$ {{ product.price }}</p>
+                            <a target="_blank" href="/product/{{ product.id }}">
+                                <button class="app-btn primary">Ver Detalhes</button>
+                            </a>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,53 @@
+#app-header {
+    position: relative;
+    display: block;
+    height: 100px;
+
+    padding: 1rem 2rem;
+
+    box-shadow: 0 0 5px 1px var(--color-shadow);
+
+    display: flex;
+    align-items: center;
+
+    background-color: white;
+    z-index: 2;
+}
+
+#app-header img {
+    height: 75px;
+
+    margin-right: .75rem;
+}
+
+#app-header div h1 {
+    font-size: 3rem;
+}
+
+#app-header div p {
+    margin-left: .5rem;
+}
+
+@media (max-width: 600px) {
+    #app-header div h1 {
+        font-size: 2.5rem;
+    }
+
+    #app-header div p {
+        margin-left: 0;
+    }
+}
+
+@media (max-width: 500px) {
+    #app-header img {
+        height: 50px;
+    }
+
+    #app-header div h1 {
+        font-size: 1.75rem;
+    }
+
+    #app-header div p {
+        font-size: .8rem;
+    }
+}

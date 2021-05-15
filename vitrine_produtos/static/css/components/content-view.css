@@ -1,0 +1,19 @@
+#app-content-view {
+    padding: 2rem;
+    height: calc(100% - 132px - 4rem);
+}
+
+#app-content-view.bg-white {
+    background-color: white;
+}
+
+#app-content-view.row {
+    display: flex;
+}
+
+#app-content-view #content-view-title {
+    margin-left: .25rem;
+    margin-bottom: 1.25rem;
+
+    font-size: 2.25rem;
+}
