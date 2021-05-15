@@ -12,14 +12,18 @@ Obs.: Este projeto foi criado utilizando o python 3.8. Sugiro que o utilize para
 1. Crie o ambiente virtual do projeto: python3 -m venv venv
 2. Ative-o: source venv/bin/activate
 3. Instale suas dependências: pip3 install -r requirements.txt
-4. Crie o banco de dados executando as migrations: python3 manage.py migrate
-5. Crie um usuário primário: python3 manage.py createsuperuser
-6. Inicie o Servidor: python3 manage.py runserver
+4. Preencha as variáveis de ambiente no arquivo .env que está dentro de "vitrine_produtos" para ter a referência do banco de dados;
+5. Crie o banco de dados executando as migrations: python3 manage.py migrate
+6. Crie um usuário primário: python3 manage.py createsuperuser
+7. Inicie o Servidor: python3 manage.py runserver
 ```
 
 E pronto, a aplicação estará executando de forma local na porta 8000.
 
 ## Rotas da Aplicação
+
+Na raiz do projeto, há um arquivo chamado `Insomnia Workspace.json` que está em formado JSON. Ele pode ser utilizado como 
+esquema/configuração das requisições e pode ser utilizado tanto no Insomnia quanto no Postman. 
 
 ### Autenticação
 
