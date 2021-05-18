@@ -60,7 +60,7 @@ function loginRequest(dto, responseFun) {
             if (xhr.status === 200) {
                 const data = JSON.parse(xhr.response)
 
-                if(data['role'] === 2) {
+                if(data['user']['role'] === 2) {
                     responseFun(data)
 
                     window.location.href = '/manager/products'
